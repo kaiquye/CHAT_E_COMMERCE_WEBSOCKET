@@ -15,6 +15,7 @@ class Server {
     this.server = http.createServer(this.App);
     this.io = new socket.Server(this.server);
     this.Middleware();
+    this.WebSocket();
     this.Routes();
   }
 
@@ -24,12 +25,11 @@ class Server {
     this.App.use(helmetConfig());
   }
 
-  private Routes(): void {
+  private WebSocket(): void {
     this.io.on("connection", (emit) => new WebSocketServices(emit));
-    this.App.get("/teste", (req, res) => {
-      console.log(req);
-    });
   }
+
+  private Routes(): void {}
 }
 
 export default new Server().server;

@@ -3,26 +3,27 @@ import Imessage from "./websocket_interface";
 import WebsocketData from "./websocket_data";
 
 class WebSocketServices {
-  private io;
+  io: Socket;
 
   constructor(socket: Socket) {
     this.io = socket;
-    this.Events();
+    this.Room();
+    this.Message();
   }
 
-  private Events(): void {
+  private Room(): void {
     this.io.on("nova_sala", (data: Imessage) => {
       this.io.join(data.sala);
-      let message = WebsocketData.findByRoom(data);
-      console.log(message)
-      this.io.to(data.sala).emit("sala_mensagens", message);
+      this.io.to(data.sala).emit("sala_mensagens", WebsocketData.findByRoom(data));
     });
+  }
 
+  private Message(): void {
     this.io.on("nova_mensagem", (data: Imessage) => {
-      console.log(data)
+      console.log(data);
       WebsocketData.newMessage(data);
+      this.io.to(data.sala).emit('sala_mensagens',  WebsocketData.findByRoom(data))
     });
-    // buscar mensagens por sala
   }
 }
 
