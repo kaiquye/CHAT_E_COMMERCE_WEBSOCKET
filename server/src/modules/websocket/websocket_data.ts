@@ -16,7 +16,7 @@ class WebSocketData implements WebSocketRepository<Imessage> {
   message: Imessage[] = [];
 
   findAll(): Imessage[] {
-    throw new Error("Method not implemented.");
+    return this.message;
   }
   findByRoom(message: Imessage): Imessage[] {
     let messages_by_room = this.message.filter(

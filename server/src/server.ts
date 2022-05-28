@@ -29,7 +29,9 @@ class Server {
     this.io.on("connection", (emit) => new WebSocketServices(emit));
   }
 
-  private Routes(): void {}
+  private Routes(): void {
+      
+  }
 }
 
 export default new Server().server;
