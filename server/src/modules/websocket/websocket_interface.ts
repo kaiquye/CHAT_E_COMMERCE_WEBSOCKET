@@ -1,6 +1,6 @@
 interface Imessage {
   sala: string;
-  message: string;
+  mensagem: string;
 }
 
 export default Imessage;
