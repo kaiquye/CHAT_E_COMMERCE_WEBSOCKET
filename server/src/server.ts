@@ -2,6 +2,7 @@ import express from "express";
 import helmetConfig from "./middlewares/helmet/index";
 import corsConfig from "./middlewares/cors/index";
 import socket, { Socket } from "socket.io";
+import WebSocketServices from "./modules/websocket/websocket_services";
 import http from "http";
 
 class Server {
@@ -24,12 +25,11 @@ class Server {
   }
 
   private Routes(): void {
-    this.io.on("connection", (emit) => this.teste(emit));
+    this.io.on("connection", (emit) => new WebSocketServices(emit));
     this.App.get("/teste", (req, res) => {
       console.log(req);
     });
   }
-  
 }
 
 export default new Server().server;

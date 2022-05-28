@@ -7,7 +7,10 @@ function App() {
   const Socket = io("ws://localhost:4000", {
     transports: ["websocket"],
   })
-  Socket.emit('teste', 'teste')
+  Socket.emit('novo_sala', { sala: 'kaique' })
+  Socket.on('teste', (data) => {
+    console.log(data)
+  })
 
   return (
     <div className="App">
