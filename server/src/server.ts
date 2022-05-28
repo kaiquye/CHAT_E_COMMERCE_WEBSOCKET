@@ -4,6 +4,7 @@ import corsConfig from "./middlewares/cors/index";
 import socket, { Socket } from "socket.io";
 import WebSocketServices from "./modules/websocket/websocket_services";
 import http from "http";
+import routesManager from "./modules/manager/routes-manager";
 
 class Server {
   public server;
@@ -30,7 +31,7 @@ class Server {
   }
 
   private Routes(): void {
-      
+    this.App.use("/gerente", routesManager);
   }
 }
 
