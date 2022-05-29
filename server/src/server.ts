@@ -27,7 +27,7 @@ class Server {
   }
 
   private WebSocket(): void {
-    this.io.on("connection", (emit) => new WebSocketServices(emit));
+    this.io.on("connection", (emit) => new WebSocketServices(emit, this.io));
   }
 
   private Routes(): void {

@@ -11,10 +11,12 @@ import auth from "../../middlewares/auth";
  */
 
 class WebSocketServices {
+  instaceIo: any;
   io: Socket;
 
-  constructor(socket: Socket) {
+  constructor(socket: Socket, io: any) {
     this.io = socket;
+    this.instaceIo = io;
     this.Room();
     this.Message();
     this.FindAll();
@@ -22,10 +24,9 @@ class WebSocketServices {
 
   private Room(): void {
     this.io.on("nova_sala", (data: Imessage) => {
+      console.log(data);
       this.io.join(data.sala);
-      this.io
-        .to(data.sala)
-        .emit("sala_mensagens", WebsocketData.findByRoom(data));
+      this.instaceIo.to(data.sala).emit("sala_mensagens", 123);
     });
   }
 
@@ -33,7 +34,7 @@ class WebSocketServices {
     this.io.on("nova_mensagem", (data: Imessage) => {
       console.log(data);
       WebsocketData.newMessage(data);
-      this.io
+      this.instaceIo
         .to(data.sala)
         .emit("sala_mensagens", WebsocketData.findByRoom(data));
     });
@@ -43,9 +44,9 @@ class WebSocketServices {
   private FindAll(): void {
     this.io.on("lista_mensagens", (data: Imessage) => {
       if (auth.validadeManagerWebToken(data.authToken)) {
-        return this.io.emit("lista_mensagens", WebsocketData.findAll());
+        return this.instaceIo.emit("lista_mensagens", WebsocketData.findAll());
       } else {
-        return this.io.emit("lista_mensagens", {
+        return this.instaceIo.emit("lista_mensagens", {
           status: 401,
           message: "Unauthorized",
         });

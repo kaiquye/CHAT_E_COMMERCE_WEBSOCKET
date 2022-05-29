@@ -17,18 +17,25 @@ export function ContextChatWebSocketProvider({ children }) {
         }
     }, [])
 
+
+
     // sala : email
     let NovaSala = ({ sala }) => {
-        socket.emit('nova_sala', { sala })
+        socket.emit('nova_sala', {sala : '123', message: 'bosta'})
+        socket.on('sala_mensagens', (data) => {
+            console.log('mensagens sala :', data)
+        })
+        socket.on('lista_mensagens', (data) => {
+            console.log(data)
+        })
     }
 
     let ListaMensagem = () => {
         socket.emit('lista_mensagens', { sala: 'kaique', mensagem: 'ola' })
-
     }
 
     // sala : email
-    let EnviarMensagem = ({ sala, mensagem }) => {
+    let EnviarMensagem = (sala, mensagem) => {
         socket.emit("nova_mensagem", { sala, mensagem })
 
     }
