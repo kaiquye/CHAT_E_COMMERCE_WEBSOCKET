@@ -1,10 +1,11 @@
-import { ChatWeb } from '../../components/chat-componets/index'
+import { ChatWeb } from '../../components/chat-componet/index'
 
 function HomePage() {
     return (
         <main>
-            <h1>TESTE HOME</h1>
-            <ChatWeb />
+            <section>
+                <ChatWeb />
+            </section>
         </main>
     )
 }

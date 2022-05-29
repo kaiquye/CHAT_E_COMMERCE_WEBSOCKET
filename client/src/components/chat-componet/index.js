@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { ContextChatWebSocket } from "../../context/chat-web-context/contextChat"
-
+import style from './chat.modules.css'
 
 export function ChatWeb() {
 
