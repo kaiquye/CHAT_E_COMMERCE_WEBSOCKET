@@ -4,20 +4,10 @@ import { ContextChatWebSocket } from "../../context/chat-web-context/contextChat
 
 export function ChatWeb() {
 
-    const { NovaSala, EnviarMensagem, socket, ListaMensagem } = useContext(ContextChatWebSocket)
+    const { NovaSala, EnviarMensagem, socket, ListaMensagem, mensagens } = useContext(ContextChatWebSocket)
 
     const [sala, setSala] = useState(null)
-
-    useEffect(() => {
-        if (socket !== null) {
-            socket.on('lista_mensagens', (data) => {
-                console.log(data)
-            })
-            socket.on('sala_mensagens', (data) => {
-                console.log('mensagens sala :', data)
-            })
-        }
-    }, [socket])
+    const [novaMensagem, setNovaMensagem] = useState(null)
 
     return (
         <main>
@@ -29,8 +19,13 @@ export function ChatWeb() {
             </section>
 
             <section>
-                <input type={"text"} />
-                <button onClick={() => EnviarMensagem(123, 'asdas')} >enviar</button>
+                <input type={"text"} onChange={(e) => setNovaMensagem(e.target.value)} />
+                <button onClick={() => EnviarMensagem(sala, novaMensagem, 'client')} >enviar</button>
+                {mensagens &&
+                    mensagens.map((mensagem) => (
+                        <h1>{mensagem.mensagem}</h1>
+                    ))
+                }
             </section>
         </main>
     )

@@ -26,7 +26,9 @@ class WebSocketServices {
     this.io.on("nova_sala", (data: Imessage) => {
       console.log(data);
       this.io.join(data.sala);
-      this.instaceIo.to(data.sala).emit("sala_mensagens", 123);
+      this.instaceIo
+        .to(data.sala)
+        .emit("sala_mensagens", WebsocketData.findByRoom(data));
     });
   }
 

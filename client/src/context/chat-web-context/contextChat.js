@@ -7,6 +7,7 @@ export const ContextChatWebSocket = createContext({});
 export function ContextChatWebSocketProvider({ children }) {
 
     const [socket, setSocket] = useState(null)
+    const [mensagens, setMensagens] = useState(null)
 
     useEffect(() => {
         if (socket == null) {
@@ -18,15 +19,12 @@ export function ContextChatWebSocketProvider({ children }) {
     }, [])
 
 
-
     // sala : email
     let NovaSala = ({ sala }) => {
-        socket.emit('nova_sala', {sala : '123', message: 'bosta'})
+        socket.emit('nova_sala', { sala: sala })
         socket.on('sala_mensagens', (data) => {
             console.log('mensagens sala :', data)
-        })
-        socket.on('lista_mensagens', (data) => {
-            console.log(data)
+            setMensagens(data)
         })
     }
 
@@ -34,14 +32,14 @@ export function ContextChatWebSocketProvider({ children }) {
         socket.emit('lista_mensagens', { sala: 'kaique', mensagem: 'ola' })
     }
 
-    // sala : email
-    let EnviarMensagem = (sala, mensagem) => {
-        socket.emit("nova_mensagem", { sala, mensagem })
+    // sala : email // usuario : admin ou client
+    let EnviarMensagem = (sala, mensagem, usuario) => {
+        socket.emit("nova_mensagem", { sala, mensagem, usuario })
 
     }
 
     return (
-        <ContextChatWebSocket.Provider value={{ NovaSala, EnviarMensagem, ListaMensagem, socket }} >
+        <ContextChatWebSocket.Provider value={{ NovaSala, EnviarMensagem, ListaMensagem, socket, mensagens }} >
             {children}
         </ContextChatWebSocket.Provider>
     )
