@@ -12,9 +12,15 @@ interface IAuth {
     next: NextFunction
   ): NextFunction | Response | void;
   newTokenManager(email: string): string;
+  validadeManagerWebToken(token: string): string | JWT.JwtPayload;
 }
 
 class Auth implements IAuth {
+  validadeManagerWebToken(token: string | undefined): string | JWT.JwtPayload {
+    let Secret = process.env.SECRET || "";
+    let Token = token || "";
+    return JWT.verify(Token, Secret);
+  }
   authManager(
     req: Request,
     res: Response,
