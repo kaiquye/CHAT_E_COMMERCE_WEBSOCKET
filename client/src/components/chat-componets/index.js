@@ -1,13 +1,14 @@
 
+function ChatWeb() {
 
 
-function ChatWeb(){
+    
 
-
-    return(
+    return (
         <main>
             <section>
-            
+                <input type={"text"} />
+                <button>enviar</button>
             </section>
         </main>
     )
