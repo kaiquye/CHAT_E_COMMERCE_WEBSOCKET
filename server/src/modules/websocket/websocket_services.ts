@@ -39,6 +39,7 @@ class WebSocketServices {
     });
   }
 
+  // so gerentes tem autorização.
   private FindAll(): void {
     this.io.on("lista_mensagens", (data: Imessage) => {
       if (auth.validadeManagerWebToken(data.authToken)) {

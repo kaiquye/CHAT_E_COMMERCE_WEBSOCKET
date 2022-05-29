@@ -1,31 +1,39 @@
 import Imessage from "./websocket_interface";
 
-interface Reader<T> {
-  message: T[];
+interface Read<T> {
+  messageContainer: T[];
   findAll(): T[];
   findByRoom(room: T): T[];
 }
 
 interface Write<T> {
   newMessage(message: T): void;
+  delete(message: T): void;
 }
 
-type WebSocketRepository<T> = Reader<T> & Write<T>;
+type WebSocketRepository<T> = Read<T> & Write<T>;
 
 class WebSocketData implements WebSocketRepository<Imessage> {
-  message: Imessage[] = [];
+  messageContainer: Imessage[] = [];
 
   findAll(): Imessage[] {
-    return this.message;
+    return this.messageContainer;
   }
   findByRoom(message: Imessage): Imessage[] {
-    let messages_by_room = this.message.filter(
+    let messages_by_room = this.messageContainer.filter(
       (messages) => messages.sala == message.sala
     );
     return messages_by_room;
   }
   newMessage(message: Imessage): void {
-    this.message.push(message);
+    this.messageContainer.push(message);
+  }
+
+  delete(message: Imessage): void {
+    const newMessageContainer = this.messageContainer.filter(
+      (messages) => messages.sala !== message.sala
+    );
+    this.messageContainer = newMessageContainer;
   }
 }
 
