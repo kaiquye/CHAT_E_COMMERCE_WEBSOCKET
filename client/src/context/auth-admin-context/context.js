@@ -16,7 +16,7 @@ export function AuthContextProvider({ children }) {
             setAuth(true)
             return true
         } catch (error) {
-            alert(error)
+            console.log(error)
             return false
         }
     }

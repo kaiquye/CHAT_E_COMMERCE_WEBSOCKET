@@ -9,5 +9,6 @@ export const AuthRoute = function ({ children }) {
     if (Auth) {
         return { children }
     }
+
     return <LoginAdminPage />
 }

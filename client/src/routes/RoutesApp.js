@@ -3,6 +3,8 @@ import { ContextChatWebSocketProvider } from '../context/chat-web-context/contex
 import { AuthContextProvider } from '../context/auth-admin-context/context';
 import Home from '../pages/home-public/home'
 import { LoginAdminPage } from '../pages/login-admin-public';
+import { PainelAdminPage } from '../pages/painel-admin';
+import { AuthRoute } from './PrivateRoutes';
 
 function RoutesApp() {
     return (
@@ -11,6 +13,7 @@ function RoutesApp() {
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/login' element={<LoginAdminPage />} />
+                    <Route path='/painel' element={<AuthRoute><PainelAdminPage /></AuthRoute>} />
                 </Routes>
             </ContextChatWebSocketProvider>
         </AuthContextProvider>
