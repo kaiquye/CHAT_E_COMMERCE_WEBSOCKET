@@ -12,14 +12,20 @@ interface IAuth {
     next: NextFunction
   ): NextFunction | Response | void;
   newTokenManager(email: string): string;
-  validadeManagerWebToken(token: string): string | JWT.JwtPayload;
+  validadeManagerWebToken(token: string): boolean;
 }
 
 class Auth implements IAuth {
-  validadeManagerWebToken(token: string | undefined): string | JWT.JwtPayload {
-    let Secret = process.env.SECRET || "";
-    let Token = token || "";
-    return JWT.verify(Token, Secret);
+  validadeManagerWebToken(token: string | undefined): boolean {
+    try {
+      let Secret = process.env.SECRET || "";
+      let Token = token || "";
+      JWT.verify(Token, Secret);
+      return true;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
   }
   authManager(
     req: Request,

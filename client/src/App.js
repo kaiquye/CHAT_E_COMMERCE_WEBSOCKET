@@ -15,6 +15,12 @@ function App() {
     console.log(data)
   })
 
+  Socket.emit('lista_mensagens', { sala: 'kaique', mensagem: 'ola' })
+
+  Socket.on('lista_mensagens', (data) => {
+    console.log(data)
+  })
+
   return (
     <div className="App">
       <h1>Teste</h1>
