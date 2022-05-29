@@ -23,7 +23,14 @@ class ManagerRepository implements repository<IManager> {
     throw new Error("Method not implemented.");
   }
   async exists(manager: IManager): Promise<any[] | null> {
-    throw new Error("Method not implemented.");
+    const response = await connection("manager")
+      .select("id", "email")
+      .where("email", manager.email)
+      .orWhere("tel", manager.phone);
+    if (response[0] == undefined) {
+      return null;
+    }
+    return response;
   }
   async create(manager: IManager): Promise<void | any[]> {
     return connection("manager").insert(manager);
@@ -35,3 +42,5 @@ class ManagerRepository implements repository<IManager> {
     throw new Error("Method not implemented.");
   }
 }
+
+export default new ManagerRepository();
