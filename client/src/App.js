@@ -1,4 +1,6 @@
 import './App.css';
+import { BrowserRouter } from 'react-router-dom';
+import RoutesApp from './routes/RoutesApp'
 import { io } from 'socket.io-client';
 import { useEffect } from 'react';
 
@@ -22,14 +24,11 @@ function App() {
   })
 
   return (
-    <div className="App">
-      <h1>Teste</h1>
-      <button onClick={() => {
-        Socket.emit('nova_mensagem', { sala: 'kaique', mensagem: 'ola' });
-      }} >
-        teste
-      </button>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <RoutesApp />
+      </div>
+    </BrowserRouter>
   );
 }
 
