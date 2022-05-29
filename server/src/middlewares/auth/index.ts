@@ -23,7 +23,6 @@ class Auth implements IAuth {
       JWT.verify(Token, Secret);
       return true;
     } catch (error) {
-      console.log(error);
       return false;
     }
   }

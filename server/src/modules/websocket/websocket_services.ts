@@ -42,7 +42,6 @@ class WebSocketServices {
   // so gerentes tem autorização.
   private FindAll(): void {
     this.io.on("lista_mensagens", (data: Imessage) => {
-      console.log(auth.validadeManagerWebToken(data.authToken));
       if (auth.validadeManagerWebToken(data.authToken)) {
         return this.io.emit("lista_mensagens", WebsocketData.findAll());
       } else {
