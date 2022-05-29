@@ -4,7 +4,7 @@ import { ContextChatWebSocket } from "../../context/chat-web-context/contextChat
 
 export function ChatWeb() {
 
-    const { NovaSala, EnviarMensagem, socket, ListaMensagem, mensagens } = useContext(ContextChatWebSocket)
+    const { NovaSala, EnviarMensagem, mensagens } = useContext(ContextChatWebSocket)
 
     const [sala, setSala] = useState(null)
     const [novaMensagem, setNovaMensagem] = useState(null)
@@ -23,7 +23,10 @@ export function ChatWeb() {
                 <button onClick={() => EnviarMensagem(sala, novaMensagem, 'client')} >enviar</button>
                 {mensagens &&
                     mensagens.map((mensagem) => (
-                        <h1>{mensagem.mensagem}</h1>
+                        <>
+                            <p>{mensagem.usuario}</p>
+                            <h1>{mensagem.mensagem}</h1>
+                        </>
                     ))
                 }
             </section>
