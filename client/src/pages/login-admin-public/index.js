@@ -1,6 +1,6 @@
 import { FormLogin } from "../../components/form-admin-componet"
 
-export function PainelAdminPage() {
+export function LoginAdminPage() {
     return (
         <section>
             <FormLogin />

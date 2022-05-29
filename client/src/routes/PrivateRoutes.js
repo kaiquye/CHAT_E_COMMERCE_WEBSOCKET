@@ -1,13 +1,13 @@
 import { AuthContext } from "../context/auth-admin-context/context";
 import { useContext } from "react"
-import PageLogin from "../../pages/login";
+import { LoginAdminPage } from "../pages/login-admin-public";
 
 export const AuthRoute = function ({ children }) {
 
-    const { userIsAuthenticated } = useContext(AuthContext);
+    const { Auth } = useContext(AuthContext);
 
-    if (userIsAuthenticated.auth) {
+    if (Auth) {
         return { children }
     }
-    return <PageLogin />
+    return <LoginAdminPage />
 }
