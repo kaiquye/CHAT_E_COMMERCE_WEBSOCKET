@@ -1,6 +1,8 @@
+import bcrypt from "bcrypt";
 import { AppError } from "../../util/AppError";
 import IManager from "./interface-manager";
 import ManagerRepository from "./repository-manager";
+import Auth from "../../middlewares/auth/index";
 
 interface Iservices {
   login(Manager: IManager): Promise<string | AppError>;
@@ -15,8 +17,19 @@ class ManagerServices implements Iservices {
       if (password == null) {
         return new AppError(404, "email/senha invalidos");
       }
-      
-    } catch (error) {}
+      const match = await bcrypt.compare(
+        Manager.password,
+        password[0].password
+      );
+      if (!match) {
+        return new AppError(404, "email/senha invalidos");
+      }
+      const token = Auth.newTokenManager(Manager.email);
+      return token;
+    } catch (error) {
+      console.log(error);
+      return new AppError(500, "Não foi possivel fazer login.");
+    }
   }
   async create(Manager: IManager): Promise<void | AppError> {
     try {
@@ -24,6 +37,9 @@ class ManagerServices implements Iservices {
       if (exists !== null) {
         return new AppError(409, "usuario já cadastrado");
       }
+      const hash = bcrypt.genSaltSync(10);
+      const crypt = bcrypt.hashSync(Manager.password, hash);
+      Manager.password = crypt;
       await ManagerRepository.create(Manager);
     } catch (error) {
       console.log(error);

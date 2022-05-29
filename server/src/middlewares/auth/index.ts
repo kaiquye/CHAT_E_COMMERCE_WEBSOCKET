@@ -41,7 +41,7 @@ class Auth implements IAuth {
 
   newTokenManager(email: string): string {
     const secret: string = process.env.SECRET || "";
-    const hash = JWT.sign(email, secret, { expiresIn: "1800s" });
+    const hash = JWT.sign({ email }, secret, { expiresIn: "1800s" });
     return hash;
   }
 }

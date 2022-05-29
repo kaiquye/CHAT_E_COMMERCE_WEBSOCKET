@@ -14,6 +14,7 @@ class ManagerRoutes {
 
   private Routes(): void {
     this.App.post("/novo", ManagerController.create);
+    this.App.post("/login", ManagerController.login);
   }
 }
 

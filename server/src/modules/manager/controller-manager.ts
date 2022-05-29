@@ -17,7 +17,7 @@ class ManagerController implements ImanagerController {
           .status(400)
           .json(new AppError(400, "campos invalidos").getAppErro());
       }
-      const created: void | AppError = await ManagerServices.Create(Manager);
+      const created: void | AppError = await ManagerServices.create(Manager);
       if (created instanceof AppError) {
         return res.status(Number(created.status)).json(created.getAppErro());
       }
@@ -32,6 +32,12 @@ class ManagerController implements ImanagerController {
     try {
       let Manager: Imanager = req.body;
       const token: string | AppError = await ManagerServices.login(Manager);
+      if (token instanceof AppError) {
+        return res.status(Number(token.status)).json(token.getAppErro());
+      }
+      return res
+        .status(200)
+        .json({ ok: true, token: token, message: "login feito com sucesso." });
     } catch (error) {
       return res.status(500).json(new AppError().getAppErro());
     }
