@@ -5,6 +5,7 @@ interface Read<T> {
   find(): Promise<T[]>;
   findAll(): Promise<T[]>;
   exists(manager: IManager): Promise<null | any[]>;
+  findByEmailPassword(manager: IManager): Promise<null | any[]>;
 }
 
 interface Write<T> {
@@ -16,6 +17,15 @@ interface Write<T> {
 type repository<T> = Read<T> & Write<T>;
 
 class ManagerRepository implements repository<IManager> {
+  async findByEmailPassword(manager: IManager): Promise<any[] | null> {
+    const response = await connection("manager")
+      .select("password")
+      .where("email", manager.email);
+    if (response[0] == undefined) {
+      return null;
+    }
+    return response;
+  }
   async find(): Promise<IManager[]> {
     throw new Error("Method not implemented.");
   }
