@@ -1,0 +1,7 @@
+#Server
+PORT = x
+
+#Database
+HOST = x
+USER = x
+password = x

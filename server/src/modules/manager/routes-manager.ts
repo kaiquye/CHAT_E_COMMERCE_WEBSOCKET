@@ -13,7 +13,7 @@ class ManagerRoutes {
   }
 
   private Routes(): void {
-    this.App.get("/novogerente", ManagerController.create);
+    this.App.post("/novo", ManagerController.create);
   }
 }
 
