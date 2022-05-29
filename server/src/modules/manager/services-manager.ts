@@ -11,6 +11,7 @@ class ManagerServices {
       }
       await ManagerRepository.create(manager);
     } catch (error) {
+      console.log(error);
       return new AppError(500, "Não foi possivel criar um novo gerente.");
     }
   }

@@ -13,7 +13,9 @@ class ManagerController implements ImanagerController {
     try {
       let Manager: Imanager = req.body;
       if (!Manager.email || !Manager.password || !Manager.fistName) {
-        return res.status(400).json(new AppError(400, "campos invalidos"));
+        return res
+          .status(400)
+          .json(new AppError(400, "campos invalidos").getAppErro());
       }
       const created = await ManagerServices.Create(Manager);
       if (created instanceof AppError) {
@@ -21,7 +23,8 @@ class ManagerController implements ImanagerController {
       }
       return res.status(200).json({ ok: true });
     } catch (error) {
-      return res.status(500).json(new AppError());
+      console.log(error);
+      return res.status(500).json(new AppError().getAppErro());
     }
   }
   async find(req: Request, res: Response): Promise<Response> {

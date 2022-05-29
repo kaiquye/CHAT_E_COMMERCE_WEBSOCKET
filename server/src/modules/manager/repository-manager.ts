@@ -26,7 +26,7 @@ class ManagerRepository implements repository<IManager> {
     const response = await connection("manager")
       .select("id", "email")
       .where("email", manager.email)
-      .orWhere("tel", manager.phone);
+      .orWhere("phone", manager.phone);
     if (response[0] == undefined) {
       return null;
     }
