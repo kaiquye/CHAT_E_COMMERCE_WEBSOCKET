@@ -42,8 +42,11 @@ export function ChatWeb() {
                     }
                 </section>
                 <section className={style.section_messageSend} >
-                    <input type={"text"} onChange={(e) => setNovaMensagem(e.target.value)} />
-                    <button onClick={() => EnviarMensagem(sala, novaMensagem, 'client')} >enviar</button>
+                    <input value={novaMensagem}  type={"text"} onChange={(e) => setNovaMensagem(e.target.value)} />
+                    <button onClick={() => {
+                        EnviarMensagem(sala, novaMensagem, 'client')
+                        setNovaMensagem('')
+                    }} >enviar</button>
                 </section>
             </section>
         </main>
