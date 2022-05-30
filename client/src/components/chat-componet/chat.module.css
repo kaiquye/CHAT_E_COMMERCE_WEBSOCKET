@@ -1,10 +1,11 @@
 .main {
-  width: 200px;
-  height: 300px;
+  width: 250px;
+  height:350px;
   display: flex;
   border-radius: 10px 10px 10px 10px;
   overflow: hidden;
   border: rgb(68, 152, 255) 5px solid;
+  background-color: rgb(228, 228, 228);
 }
 .title{
   font-family: Arial, Helvetica, sans-serif;
@@ -48,7 +49,7 @@ select:focus {
   flex-direction: column;
   overflow: hidden;
   height: 80%;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(242, 242, 242);
   padding: 10px;
   align-items: flex-end;
   justify-content: flex-end;
