@@ -36,7 +36,7 @@ class Auth implements IAuth {
       if (!token) {
         return res
           .status(401)
-          .json(new AppError(400, "token não foi informado."));
+          .json(new AppError(401, "token não foi informado.").getAppErro());
       }
       let Secret = process.env.SECRET || "";
       const check = JWT.verify(token, Secret);

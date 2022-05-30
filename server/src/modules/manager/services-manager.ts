@@ -18,7 +18,7 @@ class ManagerServices implements Iservices {
         return new AppError(404, "email/senha invalidos");
       }
       const match = await bcrypt.compare(
-        Manager.password,
+        Manager.password.toString(),
         password[0].password
       );
       if (!match) {
@@ -38,7 +38,7 @@ class ManagerServices implements Iservices {
         return new AppError(409, "usuario já cadastrado");
       }
       const hash = bcrypt.genSaltSync(10);
-      const crypt = bcrypt.hashSync(Manager.password, hash);
+      const crypt = bcrypt.hashSync(Manager.password.toString(), hash);
       Manager.password = crypt;
       await ManagerRepository.create(Manager);
     } catch (error) {

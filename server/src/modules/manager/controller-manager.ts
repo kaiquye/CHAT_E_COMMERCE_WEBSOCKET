@@ -10,6 +10,7 @@ interface ImanagerController {
 
 class ManagerController implements ImanagerController {
   async create(req: Request, res: Response): Promise<Response> {
+    console.log(req.body)
     try {
       let Manager: Imanager = req.body;
       if (!Manager.email || !Manager.password || !Manager.fistName) {
