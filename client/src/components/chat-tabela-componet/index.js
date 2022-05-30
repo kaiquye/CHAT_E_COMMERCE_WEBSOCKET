@@ -9,6 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { useToken } from "../../services/localStorage";
+import style from './tabela.module.css'
 
 
 export default function Tabela() {
@@ -23,17 +24,17 @@ export default function Tabela() {
     }, [socket])
 
     return (
-        <TableContainer component={Paper}>
-            <Table aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>usuario</TableCell>
-                        <TableCell >Mensagem</TableCell>
-                        <TableCell >Sala</TableCell>
-                        <TableCell>Ação</TableCell>
+        <div className={style.body} >
+            <Table className={style.tabela} aria-label="simple table">
+                <TableHead className={style.hr} >
+                    <TableRow  >
+                        <TableCell className={style.title} >Usuario</TableCell>
+                        <TableCell className={style.title}  >Mensagem</TableCell>
+                        <TableCell className={style.title}  >Sala</TableCell>
+                        <TableCell className={style.title}  >Ação</TableCell>
                     </TableRow>
                 </TableHead>
-                <TableBody>
+                <TableBody className={style.list}  >
                     {mensagens &&
                         mensagens.map((row, index) => (
                             <TableRow key={index}>
@@ -49,6 +50,6 @@ export default function Tabela() {
                         ))}
                 </TableBody>
             </Table>
-        </TableContainer>
+        </div>
     );
 }

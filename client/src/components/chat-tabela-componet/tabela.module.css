@@ -1,0 +1,14 @@
+.body {
+  width: 60%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+}
+.hr {
+  background-color: orangered;
+}
+.title{
+    color: white;
+}
