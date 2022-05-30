@@ -28,17 +28,23 @@ export function ChatWeb() {
             </section>
 
             <section ref={ref_windowChat} style={{ display: "none" }} className={style.section_chat} >
-                {mensagens &&
-                    mensagens.map((mensagem) => (
-                        <div className={style.mensagem}  >
-                            <label>{mensagem.usuario}</label>
-                            <label>{mensagem.mensagem}</label>
-                            <label>{mensagem.mensagem}</label>
-                        </div>
-                    ))
-                }
-                <input type={"text"} onChange={(e) => setNovaMensagem(e.target.value)} />
-                <button onClick={() => EnviarMensagem(sala, novaMensagem, 'client')} >enviar</button>
+                <div className={style.title} >
+                    <label>Chat</label>
+                </div>
+                <section className={style.section_mensagem}  >
+                    {mensagens &&
+                        mensagens.map((mensagem) => (
+                            <div className={style.div_mensagem}  >
+                                <label>{mensagem.usuario}</label>
+                                <label>{mensagem.mensagem}</label>
+                            </div>
+                        ))
+                    }
+                </section>
+                <section className={style.section_messageSend} >
+                    <input type={"text"} onChange={(e) => setNovaMensagem(e.target.value)} />
+                    <button onClick={() => EnviarMensagem(sala, novaMensagem, 'client')} >enviar</button>
+                </section>
             </section>
         </main>
     )
