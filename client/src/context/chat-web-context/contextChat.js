@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from 'react'
 import { io } from 'socket.io-client';
+import { useToken } from '../../services/localStorage'
 
 export const ContextChatWebSocket = createContext({});
 
@@ -8,6 +9,7 @@ export function ContextChatWebSocketProvider({ children }) {
 
     const [socket, setSocket] = useState(null)
     const [mensagens, setMensagens] = useState(null)
+    const token = useToken()
 
     useEffect(() => {
         if (socket == null) {
@@ -30,9 +32,16 @@ export function ContextChatWebSocketProvider({ children }) {
     let EnviarMensagem = (sala, mensagem, usuario) => {
         socket.emit("nova_mensagem", { sala, mensagem, usuario })
     }
+    // apenas admins ( logado : token )
+    let ListaMensagensDeUsuarios = () => {
+        socket.emit("lista_mensagens", { authToken: token.getToken() })
+        socket.on("lista_mensagens", (data) => {
+            setMensagens(data)
+        })
+    }
 
     return (
-        <ContextChatWebSocket.Provider value={{ NovaSala, EnviarMensagem, socket, mensagens }} >
+        <ContextChatWebSocket.Provider value={{ NovaSala, EnviarMensagem, socket, mensagens, ListaMensagensDeUsuarios }} >
             {children}
         </ContextChatWebSocket.Provider>
     )
