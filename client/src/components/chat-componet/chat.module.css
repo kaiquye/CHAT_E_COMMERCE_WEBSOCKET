@@ -1,37 +1,37 @@
 .main {
-  width: 250px;
-  height:350px;
+  width: 300px;
+  height: auto;
   display: flex;
   border-radius: 10px 10px 10px 10px;
   overflow: hidden;
-  border: rgb(68, 152, 255) 5px solid;
-  background-color: rgb(228, 228, 228);
+  margin-right: 15px;
+  margin-bottom: 15px;
 }
-.title{
+.title {
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   color: white;
-  background-color: green;
+  background-color: orangered;
   padding: 5px;
 }
 
 .section_escolhersala {
   width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  padding: 10px;
 }
 .buttonRoom {
-  padding: 10px;
   border: none;
   border-radius: 3px;
-  margin-top: 10px;
+  background-color: rgba(240, 248, 255, 0);
 }
 .inptuRoom {
   padding: 10px;
   border: 0px;
+  border-radius: 30px;
+  background-color: orange;
 }
 textarea:focus,
 input:focus,
@@ -43,28 +43,34 @@ select:focus {
 
 .section_chat {
   width: 100%;
+  max-height: 350px;
+  min-height: 350px;
   flex-direction: column;
   height: auto;
   color: rgb(49, 49, 49);
   font-family: Arial, Helvetica, sans-serif;
 }
-.section_mensagem{
+.section_mensagem {
   display: flex;
   flex-direction: column;
   overflow: hidden;
   height: 80%;
   background-color: rgb(242, 242, 242);
   box-shadow: inset rgb(201, 201, 201) 5px 5px 10px 5px;
+  background-image: url('./icons/man.png');
+  background-size: 40%;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 10px;
   align-items: flex-end;
   justify-content: flex-end;
   gap: 5px;
 }
 .div_mensagem {
-  width: 90%;
+  width: 80%;
   display: flex;
   flex-direction: column;
-  background-color: rgb(191, 218, 230);
+  background-color: rgba(200, 200, 200, 0.679);
   border-radius: 10px;
   word-wrap: break-word;
   gap: 10px;
@@ -76,22 +82,26 @@ select:focus {
   display: flex;
   width: 100%;
 }
-.section_messageSend input{
-  border: black 1px solid;
-  width: 90%;
+.section_messageSend input {
+  border: none;
+  background-color: orange;
+  width: 80%;
   padding: 7px;
   font-size: 16px;
   border-radius: 7px;
-}
-.section_messageSend button{
-  background-color: green;
-  border-radius: 10px;
-  border: none;
   color: white;
-  cursor: pointer;
-  transition: all 0.5s;
+  margin-bottom: 5px;
 }
-.section_messageSend button:hover{
-  background-color: rgb(149, 228, 164);
-  color: black;
+.section_messageSend button {
+  border: none;
+  cursor: pointer;
+  background-color: rgba(240, 248, 255, 0);
+}
+
+/* labels */
+
+.label_usuario {
+  color: white;
+  font-weight: 600;
+  text-align: center;
 }
