@@ -36,7 +36,7 @@ export function ChatWeb() {
                     {mensagens &&
                         mensagens.map((mensagem) => (
                             <div className={style.div_mensagem}  >
-                                <label className={style.label_usuario}  >{mensagem.usuario}</label>
+                                <label className={style.label_usuario} >{mensagem.usuario}</label>
                                 <label>{mensagem.mensagem}</label>
                             </div>
                         ))

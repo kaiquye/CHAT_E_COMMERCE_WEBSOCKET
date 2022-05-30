@@ -6,6 +6,7 @@
   overflow: hidden;
   margin-right: 15px;
   margin-bottom: 15px;
+  box-shadow: 1px 1px 4px 4px rgb(196, 196, 196);
 }
 .title {
   font-family: Arial, Helvetica, sans-serif;
@@ -26,6 +27,7 @@
   border: none;
   border-radius: 3px;
   background-color: rgba(240, 248, 255, 0);
+  cursor: pointer;
 }
 .inptuRoom {
   padding: 10px;
@@ -88,9 +90,10 @@ select:focus {
   width: 80%;
   padding: 7px;
   font-size: 16px;
+  margin-top: 4px;
   border-radius: 7px;
   color: white;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 .section_messageSend button {
   border: none;
