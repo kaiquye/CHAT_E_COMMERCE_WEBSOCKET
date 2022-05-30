@@ -18,7 +18,7 @@ export default function Tabela() {
     useEffect(() => {
         console.log(socket)
         if (socket !== null) {
-            ListaMensagensDeUsuarios('useToken.getToken()')
+            ListaMensagensDeUsuarios()
         }
     }, [socket])
 
@@ -28,8 +28,8 @@ export default function Tabela() {
                 <TableHead>
                     <TableRow>
                         <TableCell>usuario</TableCell>
-                        <TableCell align="right">Mensagem</TableCell>
-                        <TableCell align="right">Sala</TableCell>
+                        <TableCell >Mensagem</TableCell>
+                        <TableCell >Sala</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -42,7 +42,7 @@ export default function Tabela() {
                                 <TableCell component="th" scope="row">
                                     {row.mensagem}
                                 </TableCell>
-                                <TableCell align="right">{row.sala}</TableCell>
+                                <TableCell >{row.sala}</TableCell>
                             </TableRow>
                         ))}
                 </TableBody>
