@@ -10,6 +10,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { useToken } from "../../services/localStorage";
 import style from './tabela.module.css'
+import man from './icons/man (1).png'
+import send from './icons/send (1).png'
 
 
 export default function Tabela() {
@@ -34,18 +36,20 @@ export default function Tabela() {
                         <TableCell className={style.title}  >Ação</TableCell>
                     </TableRow>
                 </TableHead>
-                <TableBody className={style.list}  >
+                <TableBody  >
                     {mensagens &&
                         mensagens.map((row, index) => (
-                            <TableRow key={index}>
-                                <TableCell component="th" scope="row">
-                                    {row.usuario}
+                            <TableRow className={style.message} key={index}>
+                                <TableCell className={style.usuario} component="th" scope="row">
+                                    <img style={{ width: '30px' }} src={man} />
                                 </TableCell>
-                                <TableCell component="th" scope="row">
+                                <TableCell className={style.message} component="th" scope="row">
                                     {row.mensagem}
                                 </TableCell>
-                                <TableCell >{row.sala}</TableCell>
-                                <button>responder</button>
+                                <TableCell className={style.message} >{row.sala}</TableCell>
+                                <TableCell>
+                                    <button className={style.button} ><img style={{ width: '30px' }} src={send} /> </button>
+                                </TableCell>
                             </TableRow>
                         ))}
                 </TableBody>

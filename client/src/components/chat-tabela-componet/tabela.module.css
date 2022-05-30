@@ -9,6 +9,21 @@
 .hr {
   background-color: orangered;
 }
-.title{
-    color: white;
+.title {
+  color: white;
+}
+.message {
+  font-size: 17px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.usuario {
+  background-color: rgb(255, 255, 255);
+  color: orangered;
+  font-weight: 600;
+}
+.button {
+  background-color: rgba(255, 68, 0, 0);
+  border: none;
+  color: white;
+  cursor: pointer;
 }
