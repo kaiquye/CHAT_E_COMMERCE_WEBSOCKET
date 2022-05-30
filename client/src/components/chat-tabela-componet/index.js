@@ -30,6 +30,7 @@ export default function Tabela() {
                         <TableCell>usuario</TableCell>
                         <TableCell >Mensagem</TableCell>
                         <TableCell >Sala</TableCell>
+                        <TableCell>Ação</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -43,6 +44,7 @@ export default function Tabela() {
                                     {row.mensagem}
                                 </TableCell>
                                 <TableCell >{row.sala}</TableCell>
+                                <button>responder</button>
                             </TableRow>
                         ))}
                 </TableBody>

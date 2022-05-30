@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useState, useRef } from "react"
 import { ContextChatWebSocket } from "../../context/chat-web-context/contextChat"
-import style from './chat.modules.css'
+import style from './chat.module.css'
 
 export function ChatWeb() {
 
@@ -8,27 +8,37 @@ export function ChatWeb() {
 
     const [sala, setSala] = useState(null)
     const [novaMensagem, setNovaMensagem] = useState(null)
+    const ref_windowChat = useRef()
+    const ref_windowRoom = useRef()
+
+    const OpenWindow = () => {
+        ref_windowRoom.current.style.display = "none"
+        return ref_windowChat.current.style.display = "flex"
+    }
 
     return (
-        <main>
-
-            <section>
+        <main className={style.main} >
+            <section ref={ref_windowRoom} className={style.section_escolhersala} >
                 <label>Seu e-mail</label>
-                <input type={'text'} onChange={(e) => setSala(e.target.value)} />
-                <button onClick={() => NovaSala({ sala })} >Entrar</button>
+                <input className={style.inptuRoom} type={'text'} onChange={(e) => setSala(e.target.value)} />
+                <button className={style.buttonRoom} onClick={() => {
+                    NovaSala({ sala })
+                    OpenWindow()
+                }} >Entrar</button>
             </section>
 
-            <section>
-                <input type={"text"} onChange={(e) => setNovaMensagem(e.target.value)} />
-                <button onClick={() => EnviarMensagem(sala, novaMensagem, 'client')} >enviar</button>
+            <section ref={ref_windowChat} style={{ display: "none" }} className={style.section_chat} >
                 {mensagens &&
                     mensagens.map((mensagem) => (
-                        <>
-                            <p>{mensagem.usuario}</p>
-                            <h1>{mensagem.mensagem}</h1>
-                        </>
+                        <div className={style.mensagem}  >
+                            <label>{mensagem.usuario}</label>
+                            <label>{mensagem.mensagem}</label>
+                            <label>{mensagem.mensagem}</label>
+                        </div>
                     ))
                 }
+                <input type={"text"} onChange={(e) => setNovaMensagem(e.target.value)} />
+                <button onClick={() => EnviarMensagem(sala, novaMensagem, 'client')} >enviar</button>
             </section>
         </main>
     )
