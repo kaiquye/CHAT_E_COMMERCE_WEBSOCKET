@@ -8,15 +8,19 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { useToken } from "../../services/localStorage";
 
 
 export default function Tabela() {
 
-    const { ListaMensagensDeUsuarios, mensagens } = useContext(ContextChatWebSocket)
+    const { ListaMensagensDeUsuarios, mensagens, socket } = useContext(ContextChatWebSocket)
 
     useEffect(() => {
-        ListaMensagensDeUsuarios()
-    }, [])
+        console.log(socket)
+        if (socket !== null) {
+            ListaMensagensDeUsuarios('useToken.getToken()')
+        }
+    }, [socket])
 
     return (
         <TableContainer component={Paper}>
@@ -30,8 +34,11 @@ export default function Tabela() {
                 </TableHead>
                 <TableBody>
                     {mensagens &&
-                        mensagens.map((row) => (
-                            <TableRow key={row.usuario}>
+                        mensagens.map((row, index) => (
+                            <TableRow key={index}>
+                                <TableCell component="th" scope="row">
+                                    {row.usuario}
+                                </TableCell>
                                 <TableCell component="th" scope="row">
                                     {row.mensagem}
                                 </TableCell>

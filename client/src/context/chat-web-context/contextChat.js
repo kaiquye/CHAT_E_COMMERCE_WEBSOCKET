@@ -33,9 +33,8 @@ export function ContextChatWebSocketProvider({ children }) {
         socket.emit("nova_mensagem", { sala, mensagem, usuario })
     }
     // apenas admins ( logado : token )
-    let ListaMensagensDeUsuarios = () => {
-        console.log(token.getToken())
-        socket.emit("lista_mensagens", { authToken: token.getToken() })
+    let ListaMensagensDeUsuarios = (authToken) => {
+        socket.emit("lista_mensagens", { authToken: authToken })
         socket.on("lista_mensagens", (data) => {
             setMensagens(data)
         })
