@@ -1,13 +1,14 @@
 import { AuthContext } from "../context/auth-admin-context/context";
 import { useContext } from "react"
 import { LoginAdminPage } from "../pages/login-admin-public";
+import { useToken } from "../services/localStorage";
 
 export const AuthRoute = function ({ children }) {
 
-    const { Auth } = useContext(AuthContext);
+    const isToken = useToken().getToken()
 
-    if (Auth) {
-        return { children }
+    if (isToken) {
+        return children
     }
 
     return <LoginAdminPage />

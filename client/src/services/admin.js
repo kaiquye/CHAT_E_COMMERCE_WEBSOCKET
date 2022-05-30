@@ -8,13 +8,13 @@ const API = Axios.create({
 export function AdminServices() {
     return ({
         login: async function (email, password) {
-            API.post('/login', {
+            return API.post('/login', {
                 password: password,
                 email: email
             })
         },
         register: async function (fistName, phone, password, email) {
-            API.post('/novo', {
+            return API.post('/novo', {
                 fistName: fistName,
                 phone: phone,
                 password: password,

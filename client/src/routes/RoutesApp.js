@@ -14,7 +14,7 @@ function RoutesApp() {
                     <Route path='/' element={<Home />} />
                     <Route path='/login' element={<LoginAdminPage />} />
                     <Route path='/painel' element={<AuthRoute><PainelAdminPage /></AuthRoute>} />
-                </Routes>
+                </Routes>   
             </ContextChatWebSocketProvider>
         </AuthContextProvider>
     )

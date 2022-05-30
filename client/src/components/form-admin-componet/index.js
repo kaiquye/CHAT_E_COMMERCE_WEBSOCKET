@@ -23,7 +23,7 @@ export function FormLogin() {
         <section>
             <form onSubmit={(event) => logado(event, email, password)} >
                 <label>Email</label>
-                <input type="email" onChange={(e) => setEmail(e.target.value)} />
+                <input type="text" onChange={(e) => setEmail(e.target.value)} />
                 <label>Password</label>
                 <input type="password" onChange={(e) => setPassword(e.target.value)} />
                 <button>Entrar</button>

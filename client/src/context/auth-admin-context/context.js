@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import { AdminServices } from "../../services/admin";
+import { useToken } from "../../services/localStorage";
 
 export const AuthContext = createContext({});
 
@@ -9,10 +10,12 @@ export function AuthContextProvider({ children }) {
     const [Auth, setAuth] = useState(false)
 
     const useAdmin = AdminServices()
+    const Token = useToken()
 
-    let Login = (email, password) => {
+    let Login = async (email, password) => {
         try {
-            useAdmin.login(email, password)
+            let response = await useAdmin.login(email, password)
+            Token.setToken(response.data.Token)
             setAuth(true)
             return true
         } catch (error) {
