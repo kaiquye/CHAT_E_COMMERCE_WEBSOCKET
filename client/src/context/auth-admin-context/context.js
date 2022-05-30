@@ -15,7 +15,8 @@ export function AuthContextProvider({ children }) {
     let Login = async (email, password) => {
         try {
             let response = await useAdmin.login(email, password)
-            Token.setToken(response.data.Token)
+            console.log(response)
+            Token.setToken(response.data.token)
             setAuth(true)
             return true
         } catch (error) {

@@ -7,7 +7,7 @@ export const AuthRoute = function ({ children }) {
 
     const isToken = useToken().getToken()
 
-    if (isToken) {
+    if (isToken !== undefined || isToken !== null || isToken !== false) {
         return children
     }
 
