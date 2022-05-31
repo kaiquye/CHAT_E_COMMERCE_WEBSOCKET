@@ -42,8 +42,12 @@ export function ContextChatWebSocketProvider({ children }) {
         })
     }
 
+    let ResponderUsuario = (sala, mensagem, authToken) => {
+        socket.emit("nova_mensagem", { sala, mensagem, authToken, usuario: "admin" })
+    }
+
     return (
-        <ContextChatWebSocket.Provider value={{ NovaSala, EnviarMensagem, socket, mensagens, ListaMensagensDeUsuarios }} >
+        <ContextChatWebSocket.Provider value={{ NovaSala, EnviarMensagem, socket, mensagens, ListaMensagensDeUsuarios, ResponderUsuario }} >
             {children}
         </ContextChatWebSocket.Provider>
     )

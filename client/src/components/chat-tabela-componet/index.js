@@ -16,10 +16,11 @@ import deleteImg from './icons/delete.png'
 
 export default function Tabela() {
 
-    const { ListaMensagensDeUsuarios, mensagens, socket } = useContext(ContextChatWebSocket)
+    const { ListaMensagensDeUsuarios, mensagens, socket, ResponderUsuario } = useContext(ContextChatWebSocket)
     const [mensagemResposta, setMensagemResposta] = useState(null)
     const [sala, setSala] = useState(null)
     const ref_ModalResposta = useRef()
+    let Token = useToken()
 
     useEffect(() => {
         console.log(socket)
@@ -28,7 +29,7 @@ export default function Tabela() {
         }
     }, [socket])
 
-    let openModalResposta = (sala) => {
+    let openModalResposta = () => {
 
         if (ref_ModalResposta.current.style.display == "none") {
             ref_ModalResposta.current.style.display = 'flex'
@@ -36,6 +37,10 @@ export default function Tabela() {
             ref_ModalResposta.current.style.display = 'none'
         }
 
+    }
+
+    let enviarRespostaUsuario = () => {
+        ResponderUsuario(sala, mensagemResposta, Token.getToken())
     }
 
 
@@ -46,7 +51,9 @@ export default function Tabela() {
                     <label>Responder usuário : </label>
                     <div>
                         <input type='text' placeholder="digite sua mensagem" onChange={(e) => setMensagemResposta(e.target.value)} />
-                        <button>RESPONDER</button>
+                        <button onClick={() => {
+                            enviarRespostaUsuario();
+                        }} >RESPONDER</button>
                     </div>
                 </div>
                 <Table className={style.tabela} aria-label="simple table">
