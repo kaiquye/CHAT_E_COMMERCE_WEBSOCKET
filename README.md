@@ -29,3 +29,6 @@ Projeto desenvolvido para fins de estudos e reforçar meus conhecimentos sobre e
 
 ### Esforço 🚶🏾‍♀️
 Projeto desenvolvido em 4 dias.
+
+## Linkedin
+➡ https://www.linkedin.com/in/kaique-mendes-9b61381a5/
