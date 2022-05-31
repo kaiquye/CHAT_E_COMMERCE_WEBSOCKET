@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react'
 import { AuthContext } from '../../context/auth-admin-context/context'
 import { useNavigate } from 'react-router-dom'
+import style from './form.module.css'
 
 export function FormLogin() {
 
@@ -20,8 +21,8 @@ export function FormLogin() {
     }
 
     return (
-        <section>
-            <form onSubmit={(event) => logado(event, email, password)} >
+        <section className={style.section_form} >
+            <form className={style.form} onSubmit={(event) => logado(event, email, password)} >
                 <label>Email</label>
                 <input type="text" onChange={(e) => setEmail(e.target.value)} />
                 <label>Password</label>
