@@ -1,6 +1,6 @@
 # Chat em tempo real 📣
 
-Esta aplicação simula um chat de um e-commerce em tempo real, com painal para administradores vizualizarem conversas e responderem usuarios ou eventuais clientes.
+Esta aplicação simula um chat de um e-commerce em tempo real com painal para administradores vizualizarem conversas e responderem usuarios ou eventuais clientes.
 
 ## Construido 🛠
 * Backend ( **node.js** )
@@ -17,9 +17,12 @@ Esta aplicação simula um chat de um e-commerce em tempo real, com painal para 
   * Socket.io.client | **WebSocket** : configuração de conexão entre back e front    
   * HTML&CSS | **estilos e estrutura**
 
-## Sobre 
-Projeto desenvolvido para fins de estudos e reforça meu conhecimento sobre eventos e o modulo socket.io.
+## Ideia 💡
+Chat em **tempo real** entre **cliente e administrador** da pagina web. As mensagens são salvas na memoria ( **array** ), existe algumas funções para manipular esses dados. 
+Como forma de **segurança somente ADM podem ver as mensagens salvas**, para isso ele precisa esta logado e com um Token válido.
 
+## Sobre 📁
+Projeto desenvolvido para fins de estudos e reforçar meus conhecimentos sobre eventos e o modulo socket.io.
 
-### Esforço
+### Esforço 🚶🏾‍♀️
 Projeto desenvolvido em 4 dias.
