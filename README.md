@@ -1,5 +1,8 @@
 # Chat em tempo real 📣
 
+![teste11](https://user-images.githubusercontent.com/69175890/171301910-bc3e4bc1-c990-48a7-a0b9-08b322500819.gif)
+
+
 Esta aplicação simula um chat de um e-commerce em tempo real com painal para administradores vizualizarem conversas e responderem usuarios ou eventuais clientes.
 
 ## Construido 🛠
