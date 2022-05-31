@@ -34,7 +34,10 @@
   border: 0px;
   border-radius: 30px;
   background-color: orange;
+  color: white;
+  font-weight: 600;
 }
+
 textarea:focus,
 input:focus,
 select:focus {
