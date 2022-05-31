@@ -35,7 +35,7 @@ export function ChatWeb() {
                 <section className={style.section_mensagem}  >
                     {mensagens &&
                         mensagens.map((mensagem) => (
-                            <div className={style.div_mensagem}  >
+                            <div className={mensagem.usuario == 'admin' ? style.div_mensagem_admin : style.div_mensagem_usuario}  >
                                 <label className={style.label_usuario} >{mensagem.usuario}</label>
                                 <label>{mensagem.mensagem}</label>
                             </div>

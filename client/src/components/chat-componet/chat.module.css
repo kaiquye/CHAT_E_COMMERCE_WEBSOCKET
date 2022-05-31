@@ -68,8 +68,8 @@ select:focus {
   justify-content: flex-end;
   gap: 5px;
 }
-.div_mensagem {
-  width: 80%;
+.div_mensagem_usuario {
+  width: 70%;
   display: flex;
   flex-direction: column;
   background-color: rgba(200, 200, 200, 0.679);
@@ -78,6 +78,19 @@ select:focus {
   gap: 10px;
   padding: 5px;
 }
+
+.div_mensagem_admin {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(254, 234, 49, 0.679);
+  border-radius: 10px;
+  word-wrap: break-word;
+  gap: 10px;
+  padding: 5px;
+  justify-content: start;
+}
+
 
 /* send message */
 .section_messageSend {
