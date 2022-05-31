@@ -25,7 +25,8 @@ export function ChatWeb() {
                 <button className={style.buttonRoom} onClick={() => {
                     NovaSala({ sala })
                     OpenWindow()
-                }} ><img style={{ width: '30px' }} src={iconWpp} /></button>
+                }} ><img style={{ width: '30px' }} src={iconWpp} />
+                </button>
             </section>
 
             <section ref={ref_windowChat} style={{ display: "none" }} className={style.section_chat} >
