@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useState, useRef } from "react"
 import { ContextChatWebSocket } from "../../context/chat-web-context/contextChat"
 import React from 'react';
 import Table from '@material-ui/core/Table';
@@ -18,6 +18,8 @@ export default function Tabela() {
 
     const { ListaMensagensDeUsuarios, mensagens, socket } = useContext(ContextChatWebSocket)
     const [mensagemResposta, setMensagemResposta] = useState(null)
+    const [sala, setSala] = useState(null)
+    const ref_ModalResposta = useRef()
 
     useEffect(() => {
         console.log(socket)
@@ -26,13 +28,24 @@ export default function Tabela() {
         }
     }, [socket])
 
+    let openModalResposta = (sala) => {
+
+        if (ref_ModalResposta.current.style.display == "none") {
+            ref_ModalResposta.current.style.display = 'flex'
+        } else {
+            ref_ModalResposta.current.style.display = 'none'
+        }
+
+    }
+
+
     return (
         <>
             <div className={style.body} >
-                <div className={style.modal_responser} >
-                <label>Responder usuário : </label>
-                    <div> 
-                         <input type='text' placeholder="digite sua mensagem" onChange={(e) => setMensagemResposta(e.target.value)} />
+                <div className={style.modal_responser} style={{ display: "none" }} ref={ref_ModalResposta} >
+                    <label>Responder usuário : </label>
+                    <div>
+                        <input type='text' placeholder="digite sua mensagem" onChange={(e) => setMensagemResposta(e.target.value)} />
                         <button>RESPONDER</button>
                     </div>
                 </div>
@@ -57,7 +70,10 @@ export default function Tabela() {
                                     </TableCell>
                                     <TableCell className={style.message} >{row.sala}</TableCell>
                                     <TableCell>
-                                        <button className={style.button} ><img style={{ width: '20px' }} src={send} /> </button>
+                                        <button className={style.button} onClick={() => {
+                                            setSala(row.sala)
+                                            openModalResposta()
+                                        }} ><img style={{ width: '20px' }} src={send} /> </button>
                                         <button className={style.button} ><img style={{ width: '20px' }} src={deleteImg} /> </button>
                                     </TableCell>
                                 </TableRow>
