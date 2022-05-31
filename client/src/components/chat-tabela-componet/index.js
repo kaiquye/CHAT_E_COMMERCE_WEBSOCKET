@@ -11,8 +11,8 @@ import Paper from '@material-ui/core/Paper';
 import { useToken } from "../../services/localStorage";
 import style from './tabela.module.css'
 import man from './icons/man (1).png'
-import send from './icons/send (1).png'
-
+import send from './icons/send (2).png'
+import deleteImg from './icons/delete.png'
 
 export default function Tabela() {
 
@@ -48,7 +48,8 @@ export default function Tabela() {
                                 </TableCell>
                                 <TableCell className={style.message} >{row.sala}</TableCell>
                                 <TableCell>
-                                    <button className={style.button} ><img style={{ width: '30px' }} src={send} /> </button>
+                                    <button className={style.button} ><img style={{ width: '20px' }} src={send} /> </button>
+                                    <button className={style.button} ><img style={{ width: '20px' }} src={deleteImg} /> </button>
                                 </TableCell>
                             </TableRow>
                         ))}
