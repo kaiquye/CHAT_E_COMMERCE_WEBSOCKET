@@ -1,6 +1,6 @@
-# Chat em tempo real 📣
+# Chat em tempo real para lojas onlines 📣
 
-![teste11](https://user-images.githubusercontent.com/69175890/171301910-bc3e4bc1-c990-48a7-a0b9-08b322500819.gif)
+![gif_](https://user-images.githubusercontent.com/69175890/171302654-67f8cef0-0b7c-4417-b24c-e5a5e4354315.gif)
 
 
 Esta aplicação simula um chat de um e-commerce em tempo real com painal para administradores vizualizarem conversas e responderem usuarios ou eventuais clientes.
@@ -29,6 +29,10 @@ Projeto desenvolvido para fins de estudos e reforçar meus conhecimentos sobre e
 
 ### Esforço 🚶🏾‍♀️
 Projeto desenvolvido em 4 dias.
+
+### Autor 👨🏻‍
+
+Kaique Mendes
 
 ## Linkedin
 ➡ https://www.linkedin.com/in/kaique-mendes-9b61381a5/
