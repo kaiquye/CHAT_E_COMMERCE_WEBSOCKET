@@ -6,7 +6,7 @@
 ![gif_](https://user-images.githubusercontent.com/69175890/171302654-67f8cef0-0b7c-4417-b24c-e5a5e4354315.gif)
 
 
-Esta aplicação simula um chat de um e-commerce em tempo real com painal para administradores vizualizarem conversas e responderem usuarios ou eventuais clientes.
+Esta aplicação simula um chat de um e-commerce em tempo real com painel para administradores vizualizarem conversas e responderem usuarios ou eventuais clientes.
 
 ## Construido 🛠
 * Backend ( **node.js** )
