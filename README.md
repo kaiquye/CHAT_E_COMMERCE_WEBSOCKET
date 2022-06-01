@@ -1,5 +1,7 @@
 ## Chat em tempo real para lojas online  📣
 
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
+
 ![gif_](https://user-images.githubusercontent.com/69175890/171302654-67f8cef0-0b7c-4417-b24c-e5a5e4354315.gif)
 
 
