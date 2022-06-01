@@ -1,4 +1,4 @@
-# Chat em tempo real para lojas onlines 📣
+## Chat em tempo real para lojas online  📣
 
 ![gif_](https://user-images.githubusercontent.com/69175890/171302654-67f8cef0-0b7c-4417-b24c-e5a5e4354315.gif)
 
