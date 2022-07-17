@@ -23,8 +23,7 @@ Esta aplicação simula um chat de um e-commerce em tempo real com painel para a
   * Socket.io.client | **WebSocket** : configuração de conexão entre back e front    
   * HTML&CSS | **estilos e estrutura**
 
-## ideia 💡
-Chat em **tempo real**  ( **salas privadas criadas com e-mail do cliente** )  entre **cliente e administrador** da pagina web. As mensagens são salvas na memoria ( **array** ), existe algumas funções para manipular esses dados. 
+## jwt 💡
 Como forma de **segurança somente ADM podem ver as mensagens salvas**, para isso ele precisa esta logado e com um Token válido.
 
 ## Sobre 📁
